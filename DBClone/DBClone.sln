@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBClone", "DBClone\DBClone.csproj", "{8833561B-343E-4242-A058-2358362DB91E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8833561B-343E-4242-A058-2358362DB91E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8833561B-343E-4242-A058-2358362DB91E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8833561B-343E-4242-A058-2358362DB91E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8833561B-343E-4242-A058-2358362DB91E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D464403-8E49-495B-8AD6-DE50992AC4D6}
+	EndGlobalSection
+EndGlobal

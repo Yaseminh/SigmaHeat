@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  #dbclone:
+    #stdin_open: true
+    #tty: true
+    #build:
+      #context: .
+      #dockerfile: DBClone/Dockerfile
+    #depends_on:
+      #- timescale
+    #environment:
+      #PGPASSWORD: admin
+    #ports:
+      #- "80:80"
+    #command: >
+      #/bin/bash -c "chmod +x /app/out/postgresql-backup.sh && chmod +x /app/out/postgresql-restore.sh && /app/out/postgresql-backup.sh && /app/out/postgresql-restore.sh"
+  mylo_server_mqtt:
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: MYLO_SERVER_MQTT/Dockerfile
+    ports:
+      - "707:707"
+
+     
+  opcserver:
+    build:
+      context: .
+      dockerfile: OpcServer/Dockerfile
+    ports:
+      - "4840:4840"
+    volumes:
+      - ./OpcServer/myPrivateCert.pfx:/app/myPrivateCert.pfx
+    command: >
+      /bin/bash -c "chmod 600 /app/myPrivateCert.pfx && dotnet /app/out/OpcServer.dll"
+
+  opcclient:
+    build:
+      context: .
+      dockerfile: OPCClient/Dockerfile
+    ports:
+      - "443:443"
+    volumes:
+      - ./OPCClient/myPrivateCert.pfx:/app/myPrivateCert.pfx
+    command: >
+      /bin/bash -c "chmod 600 /app/myPrivateCert.pfx && dotnet /app/out/OPCClient.dll"
+    depends_on:
+      - opcserver
+  postgres:
+    image: postgres:15
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  #backup:
+    #image: postgres:15
+    #volumes:
+      #- ./scripts:/scripts
+    #entrypoint: ["/bin/bash", "/scripts/postgresql-backup.sh"]
+    #depends_on:
+      #- timescale        
+volumes:
+  pgdata:

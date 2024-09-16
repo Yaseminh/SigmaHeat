@@ -1,0 +1,72 @@
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\bin\Debug\net5.0\DBClone.exe
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\bin\Debug\net5.0\DBClone.deps.json
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\bin\Debug\net5.0\DBClone.runtimeconfig.json
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\bin\Debug\net5.0\DBClone.runtimeconfig.dev.json
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\bin\Debug\net5.0\DBClone.dll
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\bin\Debug\net5.0\DBClone.pdb
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\obj\Debug\net5.0\DBClone.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\obj\Debug\net5.0\DBClone.AssemblyInfoInputs.cache
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\obj\Debug\net5.0\DBClone.AssemblyInfo.cs
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\obj\Debug\net5.0\DBClone.csproj.CoreCompileInputs.cache
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\obj\Debug\net5.0\DBClone.sourcelink.json
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\obj\Debug\net5.0\DBClone.dll
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\obj\Debug\net5.0\refint\DBClone.dll
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\obj\Debug\net5.0\DBClone.pdb
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\obj\Debug\net5.0\DBClone.genruntimeconfig.cache
+C:\Users\yasemin\Desktop\projeler\DBClone\DBClone\obj\Debug\net5.0\ref\DBClone.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\DBClone.exe
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\DBClone.deps.json
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\DBClone.runtimeconfig.json
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\DBClone.runtimeconfig.dev.json
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\DBClone.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\DBClone.pdb
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\Npgsql.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\System.Collections.Immutable.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\System.Text.Encodings.Web.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\System.Text.Json.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\bin\Debug\net5.0\System.Threading.Channels.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\obj\Debug\net5.0\DBClone.csproj.AssemblyReference.cache
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\obj\Debug\net5.0\DBClone.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\obj\Debug\net5.0\DBClone.AssemblyInfoInputs.cache
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\obj\Debug\net5.0\DBClone.AssemblyInfo.cs
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\obj\Debug\net5.0\DBClone.csproj.CoreCompileInputs.cache
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\obj\Debug\net5.0\DBClone.sourcelink.json
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\obj\Debug\net5.0\DBClone.csproj.Up2Date
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\obj\Debug\net5.0\DBClone.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\obj\Debug\net5.0\refint\DBClone.dll
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\obj\Debug\net5.0\DBClone.pdb
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\obj\Debug\net5.0\DBClone.genruntimeconfig.cache
+C:\Users\yasemin\Desktop\SigmaHeat\DBClone\DBClone\obj\Debug\net5.0\ref\DBClone.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\DBClone.exe
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\DBClone.deps.json
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\DBClone.runtimeconfig.json
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\DBClone.runtimeconfig.dev.json
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\DBClone.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\DBClone.pdb
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\Npgsql.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\System.Collections.Immutable.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\System.Text.Encodings.Web.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\System.Text.Json.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\bin\Debug\net5.0\System.Threading.Channels.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\obj\Debug\net5.0\DBClone.csproj.AssemblyReference.cache
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\obj\Debug\net5.0\DBClone.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\obj\Debug\net5.0\DBClone.AssemblyInfoInputs.cache
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\obj\Debug\net5.0\DBClone.AssemblyInfo.cs
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\obj\Debug\net5.0\DBClone.csproj.CoreCompileInputs.cache
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\obj\Debug\net5.0\DBClone.sourcelink.json
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\obj\Debug\net5.0\DBClone.csproj.Up2Date
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\obj\Debug\net5.0\DBClone.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\obj\Debug\net5.0\refint\DBClone.dll
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\obj\Debug\net5.0\DBClone.pdb
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\obj\Debug\net5.0\DBClone.genruntimeconfig.cache
+C:\Users\yasemin\Desktop\SigmaHeat - Copy (4)\DBClone\DBClone\obj\Debug\net5.0\ref\DBClone.dll

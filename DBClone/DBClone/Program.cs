@@ -63,7 +63,7 @@ class Program
 
         DO $$
         BEGIN
-            IF NOT EXISTS (SELECT 1 FROM _timescaledb_catalog.hypertable WHERE table_name='sensordata3') THEN
+            IF NOT EXISTS (SELECT 1 FROM timescaledb_information.hypertables WHERE hypertable_name='sensordata3') THEN
                   PERFORM create_hypertable('sensordata3', 'time');
             END IF;
          END $$;";

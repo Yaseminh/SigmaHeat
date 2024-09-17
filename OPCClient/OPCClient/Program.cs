@@ -1,4 +1,4 @@
-﻿using Opc.UaFx.Client;
+using Opc.UaFx.Client;
 using Npgsql;
 using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Paddings;
@@ -82,7 +82,7 @@ namespace OpcUa
                         string decrypted = Decrypt(encrypted, key);
                         Console.WriteLine($"Decrypted: {decrypted}");
 
-                        var connectionString = "Host=host.docker.internal;Port=5432;Username=postgres;Password=admin;Database=db1;";
+                        var connectionString = "Host=4.236.179.131;Port=5432;Username=postgres;Password=admin;Database=postgres;";
                         using (var conn = new NpgsqlConnection(connectionString))
                         {
                             conn.Open();
@@ -99,7 +99,7 @@ namespace OpcUa
                             using (var terminateCmd = new NpgsqlCommand($@"
                                 SELECT pg_terminate_backend(pg_stat_activity.pid)
                                 FROM pg_stat_activity
-                                WHERE pg_stat_activity.datname = 'db1'
+                                WHERE pg_stat_activity.datname = 'postgres'
                                 AND pid <> pg_backend_pid();", conn))
                             {
                                 terminateCmd.ExecuteNonQuery();
@@ -114,7 +114,7 @@ namespace OpcUa
                             }
 
                             // Clone the database
-                            using (var cmd = new NpgsqlCommand("CREATE DATABASE cloned_db WITH TEMPLATE db1 OWNER postgres;", conn))
+                            using (var cmd = new NpgsqlCommand("CREATE DATABASE cloned_db WITH TEMPLATE postgres OWNER postgres;", conn))
                             {
                                 cmd.ExecuteNonQuery();
                                 Console.WriteLine("Database cloned at: " + DateTime.Now);

@@ -97,7 +97,7 @@ class Program
         }
     }
 
-    // Publisher'da pglogical yapılandırma işlemleri
+    
     private static async Task ConfigurePglogicalForPublisher(NpgsqlConnection connection)
     {
         string createExtensionQuery = "CREATE EXTENSION IF NOT EXISTS pglogical;";
@@ -122,16 +122,14 @@ class Program
         }
 
         
-
-
-        // Replikasyon setini kontrol et
+       
         string checkReplicationSetQuery = "SELECT 1 FROM pglogical.replication_set WHERE set_name = 'sensorlogging';";
 
         using (var command = new NpgsqlCommand(checkReplicationSetQuery, connection))
         {
             var result = await command.ExecuteScalarAsync();
 
-            // Eğer sonuç 1 değilse tabloyu replikasyon setine ekle
+         
             if (result ==null)
             {
                 Console.WriteLine("sensorlogging replication set does not exist, skipping table addition.");
@@ -156,7 +154,7 @@ class Program
             }
             Console.WriteLine("sensorlogging replication set exists, adding sensordata3 to the replication set.");
 
-            // Tabloyu replikasyon setine ekle
+   
             string addTableToReplicationSetQuery = @"
             DO $$
             BEGIN
@@ -180,7 +178,7 @@ class Program
         Console.WriteLine("sensor3 ayarlanmaya basladiktan sorra biti");
     }
  
-    // Subscriber'da pglogical yapılandırma işlemleri
+
     private static async Task ConfigurePglogicalForSubscriber(NpgsqlConnection connection)
     {
         Console.WriteLine("subscriber basladi");
@@ -219,7 +217,7 @@ class Program
         }
     }
 
-    // Subscriber'da subscription kontrolü ve yoksa oluşturulması
+
     private static async Task CreateSubscriptionIfNotExists(NpgsqlConnection connection)
     {
        
@@ -245,7 +243,7 @@ class Program
       
     }
 
-    // Verilerin başarılı şekilde kopyalandığını kontrol etme
+    
     private static async Task CheckDataReplication(NpgsqlConnection connection)
     {
         string checkQuery = "SELECT COUNT(*) FROM sensordata3;";

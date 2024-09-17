@@ -4,6 +4,7 @@
 + Docker installed on the local machine
 + Install [Postgresql](https://www.postgresql.org/download/)
 + Install [timescaledb](https://docs.timescale.com/self-hosted/latest/install/installation-windows/#add-the-timescaledb-extension-to-your-database) in your operating system
++ Install [pglogical](https://github.com/2ndQuadrant/pglogical) in your operating system for replication
 
 ### To create a database for testing
 

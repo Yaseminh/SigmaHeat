@@ -15,6 +15,15 @@ services:
       #- "80:80"
     #command: >
       #/bin/bash -c "chmod +x /app/out/postgresql-backup.sh && chmod +x /app/out/postgresql-restore.sh && /app/out/postgresql-backup.sh && /app/out/postgresql-restore.sh"
+  dbclone:
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: DBClone/Dockerfile
+    ports:
+      - 80
+      
   mylo_server_mqtt:
     stdin_open: true
     tty: true

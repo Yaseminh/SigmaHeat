@@ -1,4 +1,4 @@
-﻿
+
 using MQTTnet;
 using MQTTnet.Server;
 using Serilog;
@@ -132,7 +132,7 @@ namespace MYLO_SERVER_MQTT
             //for local
             //var connectionString = "Host=localhost;Port=5432;Username=postgres;Password=admin;Database=db1;";
             // Connection string for PostgreSQL (using Docker settings)
-            var connectionString = "Host=host.docker.internal;Port=5432;Username=postgres;Password=admin;Database=db1;";
+            var connectionString = "Host=4.236.179.131;Port=5432;Username=postgres;Password=admin;Database=postgres;";
 
 
             using (var conn = new NpgsqlConnection(connectionString))

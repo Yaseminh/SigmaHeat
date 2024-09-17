@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Npgsql;
 
@@ -53,17 +53,47 @@ class Program
     private static async Task CreateSensorLogTable(NpgsqlConnection connection)
     {
         string createTableQuery = @"
-        CREATE TABLE IF NOT EXISTS sensor_log (
-            id SERIAL PRIMARY KEY NOT NULL,
-            location VARCHAR NOT NULL,
-            reading BIGINT NOT NULL,
-            reading_date TIMESTAMP NOT NULL
-        );";
+        CREATE EXTENSION IF NOT EXISTS timescaledb;
+        CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+         CREATE TABLE IF NOT EXISTS sensordata3 (
+        sigmadata BYTEA,
+        time TIMESTAMPTZ
+    );
+
+        DO $$
+        BEGIN
+            IF NOT EXISTS (SELECT 1 FROM _timescaledb_catalog.hypertable WHERE table_name='sensordata3') THEN
+                  PERFORM create_hypertable('sensordata3', 'time');
+            END IF;
+         END $$;";
+
 
         using (var command = new NpgsqlCommand(createTableQuery, connection))
         {
             await command.ExecuteNonQueryAsync();
-            Console.WriteLine("sensor_log table checked/created in the publisher database.");
+            Console.WriteLine("sensordata3 table created with TimescaleDB extensions.");
+        }
+
+        // Continuous aggregate view oluşturma
+        string createMaterializedViewQuery = @"
+        CREATE MATERIALIZED VIEW IF NOT EXISTS sensordata_aggregates3
+        WITH (timescaledb.continuous) AS
+        SELECT
+            time_bucket('5 minutes', time) AS bucket,
+            AVG(CAST(pgp_sym_decrypt(sigmadata::bytea, 'secret_key') AS numeric)) AS avg_data,
+            MIN(CAST(pgp_sym_decrypt(sigmadata::bytea, 'secret_key') AS numeric)) AS min_data,
+            MAX(CAST(pgp_sym_decrypt(sigmadata::bytea, 'secret_key') AS numeric)) AS max_data,
+            STDDEV(CAST(pgp_sym_decrypt(sigmadata::bytea, 'secret_key') AS numeric)) AS stddev_data
+        FROM
+            sensordata3
+        GROUP BY
+            bucket;";
+
+        using (var command = new NpgsqlCommand(createMaterializedViewQuery, connection))
+        {
+            await command.ExecuteNonQueryAsync();
+            Console.WriteLine("Continuous aggregate view sensordata_aggregates3 created.");
         }
     }
 
@@ -91,73 +121,74 @@ class Program
             Console.WriteLine("pglogical node created in the publisher database.");
         }
 
-        // Remove existing replication set
-        string dropReplicationSetQuery = @"
-        DO $$
-        BEGIN
-            IF EXISTS (SELECT 1 FROM pglogical.replication_set WHERE set_name = 'logging') THEN
-                PERFORM pglogical.drop_replication_set(set_name := 'logging');
-            END IF;
-        END $$;";
-        using (var command = new NpgsqlCommand(dropReplicationSetQuery, connection))
-        {
-            try
-            {
-                await command.ExecuteNonQueryAsync();
-                Console.WriteLine("Existing replication set removed from the publisher database.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred while removing the replication set: {ex.Message}");
-            }
-        }
+        
 
-        // Create new replication set
-        string createReplicationSetQuery = @"
+
+        // Replikasyon setini kontrol et
+        string checkReplicationSetQuery = "SELECT 1 FROM pglogical.replication_set WHERE set_name = 'sensorlogging';";
+
+        using (var command = new NpgsqlCommand(checkReplicationSetQuery, connection))
+        {
+            var result = await command.ExecuteScalarAsync();
+
+            // Eğer sonuç 1 değilse tabloyu replikasyon setine ekle
+            if (result ==null)
+            {
+                Console.WriteLine("sensorlogging replication set does not exist, skipping table addition.");
+            
+
+            // Create new replication set
+            string createReplicationSetQuery = @"
         DO $$
         BEGIN
             PERFORM pglogical.create_replication_set(
-                set_name := 'logging',
+                set_name := 'sensorlogging',
                 replicate_insert := TRUE,
                 replicate_update := FALSE,
                 replicate_delete := FALSE,
                 replicate_truncate := FALSE
             );
         END $$;";
-        using (var command = new NpgsqlCommand(createReplicationSetQuery, connection))
-        {
-            await command.ExecuteNonQueryAsync();
-            Console.WriteLine("Replication set created in the publisher database.");
+            using (var command1 = new NpgsqlCommand(createReplicationSetQuery, connection))
+            {
+                await command1.ExecuteNonQueryAsync();
+                Console.WriteLine("Replication set created in the publisher database.");
+            }
+            Console.WriteLine("sensorlogging replication set exists, adding sensordata3 to the replication set.");
+
+            // Tabloyu replikasyon setine ekle
+            string addTableToReplicationSetQuery = @"
+            DO $$
+            BEGIN
+                PERFORM pglogical.replication_set_add_table(
+                    set_name := 'sensorlogging',
+                    relation := 'sensordata3',
+                    synchronize_data := TRUE
+                );
+            END $$;";
+
+            using (var addCommand = new NpgsqlCommand(addTableToReplicationSetQuery, connection))
+            {
+                await addCommand.ExecuteNonQueryAsync();
+                Console.WriteLine("sensordata3 table added to replication set.");
+            }
+        }
+            
         }
 
-        // Add table to replication set
-        string addTableToReplicationSetQuery = @"
-        DO $$
-        BEGIN
-            PERFORM pglogical.replication_set_add_table(
-                set_name := 'logging',
-                relation := 'sensor_log',
-                synchronize_data := TRUE
-            );
-        END $$;";
-        using (var command = new NpgsqlCommand(addTableToReplicationSetQuery, connection))
-        {
-            await command.ExecuteNonQueryAsync();
-            Console.WriteLine("sensor_log table added to replication set in the publisher database.");
-        }
+
+        Console.WriteLine("sensor3 ayarlanmaya basladiktan sorra biti");
     }
-
+ 
     // Subscriber'da pglogical yapılandırma işlemleri
     private static async Task ConfigurePglogicalForSubscriber(NpgsqlConnection connection)
     {
-
+        Console.WriteLine("subscriber basladi");
         string createTableQuery = @"
-        CREATE TABLE IF NOT EXISTS sensor_log (
-            id SERIAL PRIMARY KEY NOT NULL,
-            location VARCHAR NOT NULL,
-            reading BIGINT NOT NULL,
-            reading_date TIMESTAMP NOT NULL
-        );";
+      CREATE TABLE IF NOT EXISTS sensordata3 (
+        sigmadata BYTEA,
+        time TIMESTAMPTZ
+    );";
 
         using (var command = new NpgsqlCommand(createTableQuery, connection))
         {
@@ -201,7 +232,7 @@ class Program
                 PERFORM pglogical.create_subscription(
                     subscription_name := 'wh_sensor_data',
                     provider_dsn := 'host=4.236.179.131 port=5432 dbname=postgres user=postgres password=admin',
-                    replication_sets := ARRAY['logging']
+                    replication_sets := ARRAY['sensorlogging']
                 );
             END IF;
         END $$;";
@@ -217,7 +248,7 @@ class Program
     // Verilerin başarılı şekilde kopyalandığını kontrol etme
     private static async Task CheckDataReplication(NpgsqlConnection connection)
     {
-        string checkQuery = "SELECT COUNT(*) FROM sensor_log;";
+        string checkQuery = "SELECT COUNT(*) FROM sensordata3;";
         using (var command = new NpgsqlCommand(checkQuery, connection))
         {
             var result = await command.ExecuteScalarAsync();
